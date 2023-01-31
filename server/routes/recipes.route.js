@@ -19,4 +19,3 @@ module.exports = (app) => {
     //Delete
     app.delete("/api/recipe/delete/:id", RecipeController.deleteRecipe)
 }
-//

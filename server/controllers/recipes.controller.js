@@ -34,4 +34,4 @@ module.exports.deleteRecipe = (req, res) => {
     RecipeModel.deleteOne({ _id: req.params.id })
         .then(data => res.json(data))
         .catch(err => res.json(err))
-}//
+}
