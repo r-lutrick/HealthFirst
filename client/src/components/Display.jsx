@@ -2,7 +2,9 @@ import React from 'react'
 
 const Display = () => {
     return (
-        <div>Display</div>
+        <div className='px-3 border'>
+            <h2>Featured Recipes</h2>
+        </div>
     )
 }
 
