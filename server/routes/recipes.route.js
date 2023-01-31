@@ -2,7 +2,6 @@
 const RecipeController = require('../controllers/recipes.controller')
 
 
-
 module.exports = (app) => {
     // Create
     app.post("/api/recipe/create", RecipeController.addRecipe)
