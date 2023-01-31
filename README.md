@@ -2,6 +2,12 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## REQUIRED FRONT END
+### `npm install axios react-router-dom`
+
+## REQUIRED BACK END
+### `npm install axios react-router-dom`
+
 ## Available Scripts
 
 In the project directory, you can run:
