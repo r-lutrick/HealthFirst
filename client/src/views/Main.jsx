@@ -1,8 +1,9 @@
 import React from 'react'
 // Routes
 import { Route, Routes } from 'react-router-dom';
-import Create from '../components/Create';
+// Component Display
 import Display from '../components/Display';
+import Create from '../components/Create';
 import Update from '../components/Update';
 
 const Main = () => {

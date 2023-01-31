@@ -2,7 +2,9 @@ import React from 'react'
 
 const Create = () => {
     return (
-        <div>Create</div>
+        <div>
+            <h3>Create New Recipe!</h3>
+        </div>
     )
 }
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const DeleteButton = () => {
+const DeleteButton = (props) => {
     return (
         <div>DeleteButton</div>
     )
