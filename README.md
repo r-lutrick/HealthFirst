@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ### `npm install axios react-router-dom`
 
 ## REQUIRED BACK END
-### `npm install axios react-router-dom`
+### `npm install express mongoose cors`
 
 ## Available Scripts
 
