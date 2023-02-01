@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import DeleteButton from './DeleteButton'
 
 const View = () => {
     const { id } = useParams()
@@ -39,7 +40,10 @@ const View = () => {
                     loaded && recipe.ingredients.map((ing, i) => { return (<li key={i}>{ing}</li>) })
                 }
             </ul>
+            <div className='d-flex gap-2'>
             <Link to={`/update/${id}`} className='btn btn-outline-info'>Update</Link>
+            <DeleteButton recipeId={recipe._id}/>
+            </div>
         </div>
     )
 }
