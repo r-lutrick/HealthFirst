@@ -23,7 +23,7 @@ const RecipesSchema = new mongoose.Schema({
 	},
 	// api for imgs
 	// add authors after users
-
+	// Schema.Types.Objectid
 }, { timestamps: true })
 
 // const ingredientsSchema = new mongoose.Schema({

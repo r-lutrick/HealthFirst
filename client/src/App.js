@@ -9,8 +9,12 @@ function App() {
     <div className="container">
       <NavBar />
       <div className="d-flex">
-        <TableOfContents />
-        <Main />
+        <div className="col-2">
+          <TableOfContents />
+        </div>
+        <div className="col-10">
+          <Main />
+        </div>
       </div>
     </div>
   );
