@@ -1,10 +1,10 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const Display = () => {
     const [recipes, setRecipes] = useState([])
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
     useEffect(() => {
         axios.get('http://localhost:8000/api/recipe/get')

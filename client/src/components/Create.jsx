@@ -7,6 +7,7 @@ const Create = () => {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [instructions, setInstructions] = useState('')
+    // Arrays
     const [ingredient, setIngredient] = useState('')
     const [ingredients, setIngredients] = useState([])
     const [tag, setTag] = useState('')
@@ -31,9 +32,9 @@ const Create = () => {
         const postObj = {
             name,
             description,
-            ingredients,
+            instructions,
             tags,
-            instructions
+            ingredients,
         }
         // console.log('post object: ', postObj)
         axios.post('http://localhost:8000/api/recipe/create', postObj)

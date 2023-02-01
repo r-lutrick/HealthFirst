@@ -7,23 +7,30 @@ const RecipesSchema = new mongoose.Schema({
 		type: String,
 		require: true
 	},
-	description: {
-		type: String,
-	},
 	ingredients: {
 		type: Array,
 		require: true
 	},
-	tags: {
-		type: Array,
-	},
 	instructions: {
+		type: String,
+		require: true
+	},
+	description: {
 		type: String
-	}
+	},
+	tags: {
+		type: Array
+	},
 	// api for imgs
 	// add authors after users
 
 }, { timestamps: true })
 
+// const ingredientsSchema = new mongoose.Schema({
+// 	name: {
+// 		type: String,
+// 		require: true
+// 	}
+// })
 
 module.exports = mongoose.model("Recipes", RecipesSchema)

@@ -1,45 +1,45 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 const View = () => {
     const { id } = useParams()
-    const [recipe, setRecipe] = useState("")
+    const [recipe, setRecipe] = useState([])
     const [loaded, setLoaded] = useState(false)
 
     useEffect(() => {
         axios.get(`http://localhost:8000/api/recipe/get/${id}`)
-            .then(res => {setRecipe(res.data)})
+            .then(res => {
+                setRecipe(res.data)
+                console.log(res.data)
+                setLoaded(true)
+            })
             .catch(err => console.log(err))
-    }, [id])
-    console.log(recipe)
+    }, [id, loaded])
+
     return (
-        <div>
+        <div className='px-3'>
             <h3>{recipe.name}</h3>
             {/* Author goes here */}
             <div>
-                <p>{recipe.description}</p>
+                <p>{recipe.description} </p>
                 <ul>
-                    {/* {recipe.tags.map((t, i) => {
-                        return (
-                            <li key={i}>{t}</li>
-                        )
-                    })} */}
-                    <p>{recipe.tags}</p>
+                    {
+                        loaded && recipe.tags.map((t, i) => { return (<li key={i}>{t}</li>) })
+                    }
                 </ul>
             </div>
-            <h3>Ingredients</h3>
+            <div>
+                <h3>Ingredients</h3>
+                {/* Serving size can increase/multiply the ingredients */}
+                {/* <p>Serving: <input type="number" /></p> */}
+            </div>
             <ul>
-                {/* <p>{recipe.ingredients}</p> */}
-                {/* {
-                    recipe.ingredients.map((ing, i) => {
-                        return (
-                            <li key={i}>{ing}</li>
-                        )
-                    })
-                } */}
+                {
+                    loaded && recipe.ingredients.map((ing, i) => { return (<li key={i}>{ing}</li>) })
+                }
             </ul>
-
+            <Link to={`/update/${id}`} className='btn btn-outline-info'>Update</Link>
         </div>
     )
 }
