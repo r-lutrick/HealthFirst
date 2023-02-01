@@ -23,7 +23,7 @@ const Update = () => {
         .then(res => setRecipe(res.data))
         .catch(err => console.log(`Update error: ${err}`))
     })
-//test comment for Github test
+    //test comment for Github test
     const handleSubmit = () => {
 
     }
