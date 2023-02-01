@@ -28,9 +28,14 @@ const Update = () => {
             })
             .catch(err => console.log(`Update error: ${err}`))
     })
+<<<<<<< HEAD
 
     const handleDelete = (e) => {
         e.preventDefault()
+=======
+//test comment for Github test
+    const handleSubmit = () => {
+>>>>>>> 3a0bae6f5114676895266294f118ad4fe8daedba
 
     }
     
