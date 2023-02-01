@@ -9,72 +9,99 @@ const Update = () => {
     const [name, setName] = useState(recipe.name)
     const [description, setDescription] = useState(recipe.description)
     const [instructions, setInstructions] = useState(recipe.instructions)
-    // Arrays
     const [ingredient, setIngredient] = useState(recipe.ingredient)
-    const [ingredients, setIngredients] = useState([])
     const [tag, setTag] = useState(recipe.tag)
+    // Arrays
+    const [ingredients, setIngredients] = useState([])
     const [tags, setTags] = useState([])
+
+    const [loaded, setLoaded] = useState(false)
 
     const { id } = useParams()
     const navigate = useNavigate()
 
     useEffect(() => {
         axios.get(`http://localhost:8000/api/recipe/get/${id}`)
-        .then(res => setRecipe(res.data))
-        .catch(err => console.log(`Update error: ${err}`))
+            .then(res => {
+                setRecipe(res.data)
+                setLoaded(true)
+            })
+            .catch(err => console.log(`Update error: ${err}`))
     })
 
-    const handleSubmit = () => {
+    const handleDelete = (e) => {
+        e.preventDefault()
 
+    }
+    
+    
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        // axios.put(`http://`)
     }
 
     return (
         <div>
             <h3>Update Recipe</h3>
-            <form onSubmit={handleSubmit} className='d-flex'>
-                <div className='container'>
-                    <div>
+            <form className='d-flex form-group'>
+                <div className='col-4 px-0 mr-2'>
+                    {/* NAME */}
+                    <div className='my-2'>
+                        <label htmlFor="name"><b>Name</b></label>
                         <input className='form-control' placeholder={recipe.name}
                             type="text" onChange={(e) => { setName(e.target.value) }} />
                     </div>
-                    <div>
-                        <input className='form-control' placeholder={recipe.description}
+                    {/* DESCRIPTION */}
+                    <div className='my-2'>
+                        <label htmlFor="description"><b>Description</b></label>
+                        <textarea className='form-control' placeholder={recipe.description}
                             type="text" onChange={(e) => { setDescription(e.target.value) }} />
                     </div>
-                    <div className='d-flex'>
-                        {
-                            recipe.ingredient.map((ing, i) => {
-                                <input type="text" />
-                            })
-                        }
-                        <input className='form-control' placeholder={recipe.ingredient}
-                            type="text" onChange={(e) => { setIngredient(e.target.value) }} />
-                        {/* <button className='btn btn-outline-dark' onClick={addIngredient}>+</button> */}
+                    {/* INSTRUCTIONS */}
+                    <div className='my-2'>
+                        <label htmlFor="instructions"><b>Instructions</b></label>
+                        <textarea className='form-control' placeholder={recipe.instructions}
+                            type="text" onChange={(e) => { setInstructions(e.target.value) }} />
                     </div>
-                    <div className='d-flex'>
-                        <input className='form-control' placeholder={recipe.tag}
-                            type="text" onChange={(e) => { setTag(e.target.value) }} />
-                        {/* <button className='btn btn-outline-dark' onClick={addTag}>+</button> */}
-                    </div>
-                    <div className='d-flex col my-3'>
-                        <div className='col-6'>
-                            <b>Ingredients</b>
-                            <hr />
-                            {ingredients.map((ing, i) => { return (<p key={i}>{ing}</p>) })}
-                        </div>
-                        <div className='col-6'>
-                            <b>Tags</b>
-                            <hr />
-                            {tags.map((t, i) => { return (<p key={i}>{t}</p>) })}
-                        </div>
-                    </div>
+                    <button onClick={handleSubmit} className='btn btn-outline-info my-2'>Update Recipe</button>
                 </div>
-                <div className='container'>
-                    <textarea onChange={(e) => { setInstructions(e.target.value) }}
-                        placeholder='Instructions' cols="40" rows="6" />
+                {/* INGREDIENT COLUMN */}
+                <div className='col-4 px-0 mr-2'>
+                    <b>Ingredients</b>
+                    <div className='d-flex'>
+                        <input type="text" className='form-control' />
+                        <button className='btn btn-outline-info'>Add</button>
+                    </div>
+                    {
+                        loaded && recipe.ingredients.map((ing, i) => {
+                            return (
+                                <div key={i} className='d-flex my-2'>
+                                    <input className='form-control' placeholder={ing}
+                                        type="text" onChange={(e) => { setIngredient(e.target.value) }} />
+                                    <button className='btn btn-sm btn-outline-danger' onClick={() => handleDelete(i)}>Delete</button>
+                                </div>
+                            )
+                        })
+                    }
                 </div>
-                <div className='container'>
-                    <button className='btn btn-outline-info p-3'>Submit Recipe</button>
+                {/* TAG COLUMN */}
+                <div className='col-4 px-0'>
+                    <b>Tags</b>
+                    <div className='d-flex'>
+                        <input type="text" className='form-control' />
+                        <button className='btn btn-outline-info'>Add</button>
+                    </div>
+                    {
+                        loaded && recipe.tags.map((tag, i) => {
+                            return (
+                                <div key={i} className='d-flex my-2'>
+                                    <input className='form-control' placeholder={tag}
+                                        type="text" onChange={(e) => { setTag(e.target.value) }} />
+                                    <button className='btn btn-sm btn-outline-danger' onClick={() => handleDelete(i)}>Delete</button>
+                                </div>
+                            )
+                        })
+                    }
                 </div>
             </form>
         </div>
