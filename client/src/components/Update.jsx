@@ -29,7 +29,7 @@ const Update = () => {
             .catch(err => console.log(`Update error: ${err}`))
     })
 //test comment for Github test
-    const handleSubmit = () => {
+    const handleDelete = () => {
 
     }
     
