@@ -16,6 +16,9 @@ const RecipesSchema = new mongoose.Schema({
 	},
 	tags: {
 		type: Array,
+	},
+	instructions: {
+		type: String
 	}
 	// api for imgs
 	// add authors after users

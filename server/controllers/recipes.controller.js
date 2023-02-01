@@ -5,7 +5,8 @@ const RecipeModel = require('../models/recipes.model')
 module.exports.addRecipe = (req, res) => {
     RecipeModel.create(req.body)
         .then(data => res.json(data))
-        .catch(err => res.status(400).json(err))
+        .catch(err => res.json(err))
+        // .catch(err => res.status(400).json(err))
 }
 
 // Read
@@ -26,7 +27,8 @@ module.exports.oneRecipe = (req, res) => {
 module.exports.updateRecipe = (req, res) => {
     RecipeModel.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
         .then(data => res.json(data))
-        .catch(err => res.status(400).json(err))
+        .catch(err => res.json(err))
+        // .catch(err => res.status(400).json(err))
 }
 
 // Delete
