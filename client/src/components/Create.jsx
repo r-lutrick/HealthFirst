@@ -40,6 +40,8 @@ const Create = () => {
             ingredients,
         }
         // console.log('post object: ', postObj)
+        // Axios defaults to not passing credentials. this must be set to TRUE!!!!!!
+        axios.defaults.withCredentials = true;
         axios.post('http://localhost:8000/api/recipe/create', postObj)
             .then(res => {
                 // console.log(res)

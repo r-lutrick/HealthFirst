@@ -1,4 +1,5 @@
 // Import controller
+const { authenticate } = require('../config/jwt.config')
 const RecipeController = require('../controllers/recipes.controller')
 
 
@@ -13,9 +14,9 @@ module.exports = (app) => {
     app.get("/api/recipe/get/:id", RecipeController.oneRecipe)
 
     // Update
-    app.put("/api/recipe/update/:id", RecipeController.updateRecipe)
+    app.put("/api/recipe/update/:id", authenticate, RecipeController.updateRecipe)
 
     //Delete
-    app.delete("/api/recipe/delete/:id", RecipeController.deleteRecipe)
+    app.delete("/api/recipe/delete/:id", authenticate, RecipeController.deleteRecipe)
 }
 

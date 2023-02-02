@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const Schema = mongoose.Schema
+const Recipes = require('./recipes.model')
 
 const UserSchema = new mongoose.Schema({
     firstName: {
@@ -36,8 +37,6 @@ UserSchema.virtual('confirmPassword')
 
 
 UserSchema.pre('validate', function (next) {
-    console.log(this.password)
-    console.log(this.get('confirmPassword'))
     if (this.password !== this.get('confirmPassword')) {
         this.invalidate('confirmPassword', 'Password must match confirm password')
     }

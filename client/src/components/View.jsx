@@ -25,9 +25,12 @@ const View = () => {
             <img className='container p-0 shadow img-fluid mb-3' src="https://www.eatthis.com/wp-content/uploads/sites/4/2020/07/assorted-sushi.jpg?quality=82&strip=1" alt="sushi" />
             <div className='mt-5'>
                 <h3>{recipe.name}</h3>
+                {/* Author goes here */}
+                recipe user:
+                <p>{recipe.user}</p>
             </div>
-            {/* Author goes here */}
             <div className='d-flex p-0 col'>
+                descirption:
                 <p className='col-8'>{recipe.description}</p>
                 {/* <ul className='list-unstyled col-3'> */}
                 <div className='col-1'>

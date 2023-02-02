@@ -1,5 +1,6 @@
 // Import mongoose
 const mongoose = require('mongoose');
+const { User } = require('./user.model')
 const Schema = mongoose.Schema
 
 const RecipesSchema = new mongoose.Schema({
@@ -27,9 +28,9 @@ const RecipesSchema = new mongoose.Schema({
 		type: Array
 	},
 	user: {
-        type: Schema.Types.ObjectId,
-        ref: "User"
-    }
+		type: Schema.Types.ObjectId,
+		ref: "User"
+	}
 	// api for imgs
 	// add authors after users
 	// Schema.Types.Objectid
