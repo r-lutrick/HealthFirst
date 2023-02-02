@@ -11,6 +11,10 @@ const RecipesSchema = new mongoose.Schema({
 		type: Array,
 		require: true
 	},
+	servings: {
+		type: Number,
+		require: true
+	},
 	instructions: {
 		type: String,
 		require: true

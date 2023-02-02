@@ -7,6 +7,7 @@ const Create = () => {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [instructions, setInstructions] = useState('')
+    const [servings, setServings] = useState(0)
     // Arrays
     const [ingredient, setIngredient] = useState('')
     const [ingredients, setIngredients] = useState([])
@@ -20,6 +21,7 @@ const Create = () => {
         e.preventDefault()
         setIngredients([...ingredients, ingredient])
     }
+
     const addTag = (e) => {
         e.preventDefault()
         setTags([...tags, tag])
@@ -33,6 +35,7 @@ const Create = () => {
             name,
             description,
             instructions,
+            servings,
             tags,
             ingredients,
         }
@@ -84,6 +87,13 @@ const Create = () => {
                     <hr />
                     {/* LOAD INGREDIENTS */}
                     {ingredients.map((ing, i) => { return (<p key={i}>{ing}</p>) })}
+                    { /* SERVING COLUMN */}
+                    <label htmlFor="instructions"><b>Servings</b></label>
+                    <div className='d-flex'>
+                        <input className='form-control' placeholder='0'
+                            type="number" onChange={(e) => { setServings(e.target.value) }} />
+                    </div>
+                    <hr />
                 </div>
                 {/* TAG COLUMN */}
                 <div className='col-4'>

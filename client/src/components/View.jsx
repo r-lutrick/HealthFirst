@@ -7,11 +7,13 @@ const View = () => {
     const { id } = useParams()
     const [recipe, setRecipe] = useState([])
     const [loaded, setLoaded] = useState(false)
+    const [servings, setServings] = useState('')
 
     useEffect(() => {
         axios.get(`http://localhost:8000/api/recipe/get/${id}`)
             .then(res => {
                 setRecipe(res.data)
+                setServings(res.data)
                 // console.log(res.data)
                 setLoaded(true)
             })
@@ -36,7 +38,7 @@ const View = () => {
             <div className='d-flex justify-content-between mt-3'>
                 <h3>Ingredients</h3>
                 {/* Serving size can increase/multiply the ingredients */}
-                <p>Serving: <input type="number" /></p>
+                <p>Servings: <input type="number" defaultValue={recipe.servings}/></p>
             </div>
             <ul className='list-group col-12 my-2'>
                 {

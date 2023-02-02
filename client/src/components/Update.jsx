@@ -8,6 +8,7 @@ const Update = () => {
     const [instructions, setInstructions] = useState('')
     const [ingredients, setIngredients] = useState([])
     const [tags, setTags] = useState([])
+    const [servings, setServings] = useState()
     // New items for arrays
     const [ingredient, setIngredient] = useState('')
     const [tag, setTag] = useState('')
@@ -25,6 +26,7 @@ const Update = () => {
                 setDescription(recipe.description)
                 setInstructions(recipe.instructions)
                 setIngredients(recipe.ingredients)
+                setServings(recipe.servings)
                 setTags(recipe.tags)
                 setLoaded(true)
             })
@@ -39,6 +41,7 @@ const Update = () => {
             description,
             instructions,
             ingredients,
+            servings,
             tags
         }
         axios.put(`http://localhost:8000/api/recipe/update/${id}`, putObj)
@@ -118,6 +121,11 @@ const Update = () => {
                             )
                         })
                     }
+                    <label htmlFor="instructions"><b>Servings</b></label>
+                    <div className='d-flex'>
+                        <input className='form-control' value={servings}
+                            type="number" onChange={(e) => { setServings(e.target.value) }} />
+                    </div>
                 </div>
                 {/* TAG COLUMN */}
                 <div className='col-4'>
