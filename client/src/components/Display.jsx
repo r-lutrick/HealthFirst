@@ -1,10 +1,12 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Display = () => {
     const [recipes, setRecipes] = useState([])
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
+
+
 
     useEffect(() => {
         axios.get('http://localhost:8000/api/recipe/get')
@@ -16,6 +18,10 @@ const Display = () => {
                 console.log(err)
             })
     }, [])
+    
+    const handleDivClick = (id) => {
+        navigate(`/view/${id}`)
+    }
 
     return (
         <div className='px-3'>
@@ -23,7 +29,7 @@ const Display = () => {
             {
                 recipes.map((rec, i) => {
                     return (
-                        <div className='card shadow my-2' key={i}>
+                        <div onClick={() => {handleDivClick(rec._id)}} className='card shadow my-2' style={{cursor:'pointer'}} key={i}>
                             {/* IMG HERE (img className="card-img-top"_ */}
                             <div className='card-body'>
                                 <h5 className='card-title'>{rec.name}</h5>
@@ -40,7 +46,7 @@ const Display = () => {
                                 })}
                             </ul>
                             <div className=' d-flex p-2 justify-content-end'>
-                                <Link to={`/view/${rec._id}`} className='btn btn-outline-info'>View</Link>
+                                {/* <Link to={`/view/${rec._id}`} className='btn btn-outline-info'>View</Link> */}
                             </div>
                         </div>
                     )

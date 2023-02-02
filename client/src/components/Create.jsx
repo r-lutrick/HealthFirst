@@ -88,12 +88,12 @@ const Create = () => {
                     {/* LOAD INGREDIENTS */}
                     {ingredients.map((ing, i) => { return (<p key={i}>{ing}</p>) })}
                     { /* SERVING COLUMN */}
-                    <label htmlFor="instructions"><b>Servings</b></label>
+                    {/* <label htmlFor="instructions"><b>Servings</b></label>
                     <div className='d-flex'>
                         <input className='form-control' placeholder='0'
                             type="number" onChange={(e) => { setServings(e.target.value) }} />
                     </div>
-                    <hr />
+                    <hr /> */}
                 </div>
                 {/* TAG COLUMN */}
                 <div className='col-4'>
