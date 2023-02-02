@@ -5,7 +5,7 @@ const NavBar = () => {
     const location = useLocation()
     // console.log(location)
     return (
-        <div className='border d-flex align-items-center justify-content-between p-3'>
+        <div className='d-flex bg-success bg-opacity-25 align-items-center justify-content-between p-3 '>
             <h1>Health First Recipes</h1>
             <div>
                 {

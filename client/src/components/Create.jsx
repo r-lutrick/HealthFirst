@@ -52,8 +52,8 @@ const Create = () => {
     return (
         <div>
             <h3>Create New Recipe!</h3>
-            <form onSubmit={handleSubmit} className='d-flex form-group'>
-                <div className='col-4 px-0 mr-2'>
+            <form className='d-flex justify-content-between shadow form-group'>
+                <div className='col-4'>
                     {/* NAME */}
                     <div className='my-2'>
                         <label htmlFor="name"><b>Name</b></label>
@@ -72,11 +72,9 @@ const Create = () => {
                         <textarea className='form-control' onChange={(e) => { setInstructions(e.target.value) }}
                             cols="40" rows="6" />
                     </div>
-                    {/* BUTTONS */}
-                    <button className='btn btn-outline-info my-2'>Submit</button>
                 </div>
                 {/* INGREDIENT COLUMN */}
-                <div className='col-4 px-0 mr-2'>
+                <div className='col-4'>
                     <label htmlFor="instructions"><b>Ingredients</b></label>
                     <div className='d-flex'>
                         <input className='form-control' placeholder='Add an ingredient'
@@ -88,7 +86,7 @@ const Create = () => {
                     {ingredients.map((ing, i) => { return (<p key={i}>{ing}</p>) })}
                 </div>
                 {/* TAG COLUMN */}
-                <div className='col-4 px-0 mr-2'>
+                <div className='col-4'>
                     <label htmlFor="instructions"><b>Tags</b></label>
                     <div className='d-flex'>
                         <input className='form-control' placeholder='Add a tag'
@@ -97,9 +95,13 @@ const Create = () => {
                     </div>
                     <hr />
                     {/* LOAD TAGS */}
-                    {tags.map((t, i) => {return (<p key={i}>{t}</p>)})}
+                    {tags.map((t, i) => { return (<p key={i}>{t}</p>) })}
                 </div>
             </form>
+            {/* BUTTONS */}
+            <div className='d-flex justify-content-end my-2 gap-2'>
+                <button onClick={handleSubmit} className='btn btn-outline-info shadow my-2'>Submit</button>
+            </div>
         </div>
     )
 }

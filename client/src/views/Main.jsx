@@ -10,7 +10,7 @@ import View from '../components/View';
 const Main = () => {
 
     return (
-        <div>
+        <div className='mr-3'>
             <Routes>
                 <Route path='/' element={<Display />} />
                 <Route path='/create' element={<Create />} />

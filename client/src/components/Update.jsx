@@ -77,8 +77,8 @@ const Update = () => {
     return (
         <div>
             <h3>Update Recipe</h3>
-            <form className='d-flex form-group'>
-                <div className='col-4 px-0 mr-2'>
+            <form className='d-flex shadow form-group'>
+                <div className='col-4 mr-2'>
                     {/* NAME */}
                     <div className='my-2'>
                         <label htmlFor="name"><b>Name</b></label>
@@ -98,13 +98,9 @@ const Update = () => {
                             type="text" onChange={(e) => { setInstructions(e.target.value) }} />
                     </div>
                     {/* BUTTONS */}
-                    <div className='d-flex justify-content-between my-2'>
-                        <button onClick={handleSubmit} className='btn btn-success'>Update Recipe</button>
-                        <button onClick={handleCancel} className='btn btn-outline-warning'>Cancel</button>
-                    </div>
                 </div>
                 {/* INGREDIENT COLUMN */}
-                <div className='col-4 px-0 mr-2'>
+                <div className='col-4 mr-2'>
                     <b>Ingredients</b>
                     <div className='d-flex'>
                         <input type="text" className='form-control' onChange={(e) => { setIngredient(e.target.value) }} />
@@ -124,7 +120,7 @@ const Update = () => {
                     }
                 </div>
                 {/* TAG COLUMN */}
-                <div className='col-4 px-0'>
+                <div className='col-4'>
                     <b>Tags</b>
                     <div className='d-flex'>
                         <input type="text" className='form-control' onChange={(e) => { setTag(e.target.value) }} />
@@ -144,6 +140,10 @@ const Update = () => {
                     }
                 </div>
             </form>
+            <div className='d-flex justify-content-end my-2 gap-2'>
+                <button onClick={handleSubmit} className='btn btn-success shadow'>Update Recipe</button>
+                <button onClick={handleCancel} className='btn btn-outline-warning shadow'>Cancel</button>
+            </div>
         </div>
     )
 }

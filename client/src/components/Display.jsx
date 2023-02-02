@@ -15,7 +15,7 @@ const Display = () => {
             .catch((err) => {
                 console.log(err)
             })
-    },[])
+    }, [])
 
     return (
         <div className='px-3'>
@@ -23,7 +23,7 @@ const Display = () => {
             {
                 recipes.map((rec, i) => {
                     return (
-                        <div className='card' key={i}>
+                        <div className='card shadow my-2' key={i}>
                             {/* IMG HERE (img className="card-img-top"_ */}
                             <div className='card-body'>
                                 <h5 className='card-title'>{rec.name}</h5>
@@ -31,7 +31,7 @@ const Display = () => {
                                 <p className='card-text'>{rec.description} </p>
                             </div>
                             <ul className='list-group list-group-flush'>
-                                {rec.tags.map((tag,i) => {
+                                {rec.tags.map((tag, i) => {
                                     return (
                                         <li className='list-group-item' key={i}>
                                             {tag}
@@ -39,7 +39,9 @@ const Display = () => {
                                     )
                                 })}
                             </ul>
-                            <Link to={`/view/${rec._id}`} className='btn btn-outline-info'>View</Link>
+                            <div className=' d-flex p-2 justify-content-end'>
+                                <Link to={`/view/${rec._id}`} className='btn btn-outline-info'>View</Link>
+                            </div>
                         </div>
                     )
                 })
