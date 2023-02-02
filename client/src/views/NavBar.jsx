@@ -1,9 +1,17 @@
 import React from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 const NavBar = () => {
     const location = useLocation()
+    const navigate = useNavigate()
     // console.log(location)
+    const logoutHandler = ()=>{
+        axios.get(`http://localhost:8000/api/logout`, {withCredentials: true})
+            .then(res=>navigate("/"))
+            .catch()
+    }
+
     return (
         <header className='shadow '>
             <div className='d-flex align-items-center justify-content-between p-3 '>
@@ -14,7 +22,10 @@ const NavBar = () => {
                             <Link className='btn btn-info' to={'/create'}>New Recipe</Link> :
                             <Link className='btn btn-info' to={'/'}>Home</Link>
                     }
-                    <Link className='mx-2 btn btn-outline-info' to={'#'}>Login</Link>
+                    <Link className='mx-2 btn btn-outline-info' to={'/login'}>Login/Register</Link>
+                    <button onClick={logoutHandler} className='mx-2 btn btn-outline-info'>Logout</button>
+                    <Link className='mx-2 btn btn-outline-info' to={'/myaccount'}>My Account</Link>
+
                 </div>
             </div>
             <div>

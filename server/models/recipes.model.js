@@ -1,5 +1,6 @@
 // Import mongoose
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema
 
 const RecipesSchema = new mongoose.Schema({
 	// Your objects here
@@ -25,6 +26,10 @@ const RecipesSchema = new mongoose.Schema({
 	tags: {
 		type: Array
 	},
+	user: {
+        type: Schema.Types.ObjectId,
+        ref: "User"
+    }
 	// api for imgs
 	// add authors after users
 	// Schema.Types.Objectid
