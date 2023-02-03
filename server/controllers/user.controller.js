@@ -60,12 +60,18 @@ module.exports.logout = (req, res) => {
 
 module.exports.getUser = (req, res) => {
     const decodedJwt = jwt.decode(req.cookies.usertoken, { complete: true })
-    User.findOne({ _id: decodedJwt.payload.id })
+    User.findOne({ _id: decodedJwt.payload.id }).populate("recipes")
         .then(oneUser => res.json(oneUser))
         .catch(err => res.status(500).json(err))
 }
 
-
+// GETTING ALL RECIPES ASSOCIATED WITH A USER
+// module.exports.getAllRecipes = async (req, res) => {
+//     const decodedJwt = jwt.decode(req.cookies.usertoken, { complete: true })
+//     let foundUser = await User.find({_id: decodedJwt.payload.id}).populate("recipes")
+//         .then( foundUser => res.json(foundUser))
+//         .catch(err => console.log(err))
+// }
 
 // TESTING TOOLS
 module.exports.cookie = (req, res) => {

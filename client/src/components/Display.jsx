@@ -11,7 +11,7 @@ const Display = () => {
     useEffect(() => {
         axios.get('http://localhost:8000/api/recipe/get')
             .then((res) => {
-                console.log(res.data)
+                console.log("This?",res.data)
                 setRecipes(res.data)
             })
             .catch((err) => {

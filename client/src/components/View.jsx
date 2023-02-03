@@ -7,14 +7,14 @@ const View = () => {
     const { id } = useParams()
     const [recipe, setRecipe] = useState([])
     const [loaded, setLoaded] = useState(false)
-    const [servings, setServings] = useState('')
+    const [servings, setServings] = useState('') 
 
     useEffect(() => {
         axios.get(`http://localhost:8000/api/recipe/get/${id}`)
             .then(res => {
                 setRecipe(res.data)
                 setServings(res.data)
-                // console.log(res.data)
+                console.log("recipe: ", recipe)
                 setLoaded(true)
             })
             .catch(err => console.log(err))
@@ -26,11 +26,10 @@ const View = () => {
             <div className='mt-5'>
                 <h3>{recipe.name}</h3>
                 {/* Author goes here */}
-                recipe user:
-                <p>{recipe.user}</p>
+                {/* Author:
+                <p>{recipe.user}</p> */}
             </div>
             <div className='d-flex p-0 col'>
-                descirption:
                 <p className='col-8'>{recipe.description}</p>
                 {/* <ul className='list-unstyled col-3'> */}
                 <div className='col-1'>

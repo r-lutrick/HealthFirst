@@ -49,6 +49,7 @@ module.exports.allRecipes = (req, res) => {
 
 // Read one
 module.exports.oneRecipe = (req, res) => {
+    // const decodedJwt = jwt.decode(req.cookies.usertoken, { complete: true })
     Recipe.findOne({ _id: req.params.id })
         .then(data => res.json(data))
         .catch(err => res.json(err))
