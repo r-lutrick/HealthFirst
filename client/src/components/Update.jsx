@@ -30,6 +30,7 @@ const Update = () => {
                 setIngredients(recipe.ingredients)
                 setServings(recipe.servings)
                 setTags(recipe.tags)
+                setImglink(recipe.imglink)
                 setLoaded(true)
             })
             .catch(err => console.log(`Update error: ${err}`))
@@ -153,7 +154,7 @@ const Update = () => {
                     }
                     <label htmlFor="instructions"><b>Image Link</b></label>
                     <div className='d-flex'>
-                        <input className='form-control'
+                        <input className='form-control' value={imglink}
                             type="text" onChange={(e) => { setImglink(e.target.value) }} />
                     </div>
                 </div>
