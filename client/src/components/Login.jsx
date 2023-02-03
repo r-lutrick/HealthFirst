@@ -22,7 +22,7 @@ const Login = () => {
         axios.post(`http://localhost:8000/api/login`, user, {withCredentials:true})
             .then(res=>{
                 console.log(res)
-                navigate("/users")})
+                navigate("/myaccount")})
             .catch(err => console.log(err.response))
     }
 
