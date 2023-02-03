@@ -14,9 +14,9 @@ module.exports = (app) => {
     app.get("/api/recipe/get/:id", RecipeController.oneRecipe)
 
     // Update
-    app.put("/api/recipe/update/:id", authenticate, RecipeController.updateRecipe)
+    app.put("/api/recipe/update/:id", RecipeController.updateRecipe)
 
     //Delete
-    app.delete("/api/recipe/delete/:id", authenticate, RecipeController.deleteRecipe)
+    app.delete("/api/recipe/delete/:id", RecipeController.deleteRecipe)
 }
 
