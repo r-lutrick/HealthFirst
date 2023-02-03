@@ -6,38 +6,38 @@ const jwt = require('jsonwebtoken')
 
 
 // Create
-module.exports.addRecipe = (req, res) => {
-    Recipe.create(req.body)
-        .then(data => res.json(data))
-        .catch(err => res.json(err))
-        // .catch(err => res.status(400).json(err))
-}
+// module.exports.addRecipe = (req, res) => {
+//     Recipe.create(req.body)
+//         .then(data => res.json(data))
+//         .catch(err => res.json(err))
+//         // .catch(err => res.status(400).json(err))
+// }
 
 // function to create recipes while connecting recipe to users
 // WORK IN PROGRESS FOR USER AND RECIPE CREATION
-// module.exports.addRecipe = async (req, res) => {
-//     //compares logged in user to user database
-//     // console.log(req)
-//     const decodedJWT = jwt.decode(req.cookies.usertoken, { complete: true });
-//     let foundUser = await User.findOne({ _id: decodedJWT.payload.id });
-//     //takes form data from recipe create and puts it into recipeData variable
-//     let { ...recipeData } = req.body;
-//     //ties recipeData to user - user is the name you gave it in the controller using ref
-//     recipeData.user = foundUser;
-//     Recipe.create(recipeData)
-//         .then(newRecipe => {
-//             User.findOneAndUpdate(
-//                 { _id: decodedJWT.payload.id },
-//                 { $push: { recipes: newRecipe } }
-//             )
-//                 .then(updatedUser => {
-//                     res.json({ results: newRecipe })
-//                 })
-//         })
-//         .catch(err => {
-//             res.json(err)
-//         })
-// }
+module.exports.addRecipe = async (req, res) => {
+    //compares logged in user to user database
+    // console.log(req)
+    const decodedJWT = jwt.decode(req.cookies.usertoken, { complete: true });
+    let foundUser = await User.findOne({ _id: decodedJWT.payload.id });
+    //takes form data from recipe create and puts it into recipeData variable
+    let { ...recipeData } = req.body;
+    //ties recipeData to user - user is the name you gave it in the controller using ref
+    recipeData.user = foundUser;
+    Recipe.create(recipeData)
+        .then(newRecipe => {
+            User.findOneAndUpdate(
+                { _id: decodedJWT.payload.id },
+                { $push: { recipes: newRecipe } }
+            )
+                .then(updatedUser => {
+                    res.json({ results: newRecipe })
+                })
+        })
+        .catch(err => {
+            res.json(err)
+        })
+}
 
 
 // Read

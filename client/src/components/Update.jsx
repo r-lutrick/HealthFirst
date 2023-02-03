@@ -9,6 +9,8 @@ const Update = () => {
     const [ingredients, setIngredients] = useState([])
     const [tags, setTags] = useState([])
     const [servings, setServings] = useState()
+    const [imglink, setImglink] = useState('')
+
     // New items for arrays
     const [ingredient, setIngredient] = useState('')
     const [tag, setTag] = useState('')
@@ -42,7 +44,8 @@ const Update = () => {
             instructions,
             ingredients,
             servings,
-            tags
+            tags,
+            imglink
         }
         axios.put(`http://localhost:8000/api/recipe/update/${id}`, putObj)
             .then(res => navigate(`/view/${id}`))
@@ -107,8 +110,9 @@ const Update = () => {
                     <b>Ingredients</b>
                     <div className='d-flex'>
                         <input type="text" className='form-control' onChange={(e) => { setIngredient(e.target.value) }} />
-                        <button className='btn btn-success' onClick={(e) => { e.preventDefault(); setIngredients([...ingredients, ingredient]) }}>Add</button>
+                        <button className='btn btn-info' onClick={(e) => { e.preventDefault(); setIngredients([...ingredients, ingredient]) }}>Add</button>
                     </div>
+                    <hr />
                     {/* LOAD INGREDIENTS */}
                     {
                         loaded && ingredients.map((ing, i) => {
@@ -132,8 +136,9 @@ const Update = () => {
                     <b>Tags</b>
                     <div className='d-flex'>
                         <input type="text" className='form-control' onChange={(e) => { setTag(e.target.value) }} />
-                        <button className='btn btn btn-success' onClick={(e) => { e.preventDefault(); setTags([...tags, tag]) }}>Add</button>
+                        <button className='btn btn btn-info' onClick={(e) => { e.preventDefault(); setTags([...tags, tag]) }}>Add</button>
                     </div>
+                    <hr />
                     {/* LOAD TAGS */}
                     {
                         loaded && tags.map((tag, i) => {
@@ -146,6 +151,11 @@ const Update = () => {
                             )
                         })
                     }
+                    <label htmlFor="instructions"><b>Image Link</b></label>
+                    <div className='d-flex'>
+                        <input className='form-control'
+                            type="text" onChange={(e) => { setImglink(e.target.value) }} />
+                    </div>
                 </div>
             </form>
             <div className='d-flex justify-content-end my-2 gap-2'>

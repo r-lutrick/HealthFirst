@@ -14,7 +14,7 @@ const View = () => {
             .then(res => {
                 setRecipe(res.data)
                 setServings(res.data)
-                console.log("recipe: ", recipe)
+                // console.log("recipe: ", recipe)
                 setLoaded(true)
             })
             .catch(err => console.log(err))
@@ -22,7 +22,7 @@ const View = () => {
 
     return (
         <div className='p-3 shadow'>
-            <img className='container p-0 shadow img-fluid mb-3' src="https://www.eatthis.com/wp-content/uploads/sites/4/2020/07/assorted-sushi.jpg?quality=82&strip=1" alt="sushi" />
+            <img className='container p-0 shadow img-fluid mb-3' src={recipe.imglink} alt="sushi" />
             <div className='mt-5'>
                 <h3>{recipe.name}</h3>
                 {/* Author goes here */}

@@ -8,6 +8,7 @@ const Create = () => {
     const [description, setDescription] = useState('')
     const [instructions, setInstructions] = useState('')
     const [servings, setServings] = useState(0)
+    const [imglink, setImglink] = useState('')
     // Arrays
     const [ingredient, setIngredient] = useState('')
     const [ingredients, setIngredients] = useState([])
@@ -21,11 +22,33 @@ const Create = () => {
         e.preventDefault()
         setIngredients([...ingredients, ingredient])
     }
+    const handleIngUpdate = (index, val) => {
+        const newIngredients = [...ingredients]
+        newIngredients[index] = val
+        setIngredients(newIngredients)
+    }
+    const handleIngDelete = (e, ing) => {
+        e.preventDefault()
+        const newIngredients = ingredients.filter((i) => i !== ing)
+        setIngredients(newIngredients)
+    }
+
 
     const addTag = (e) => {
         e.preventDefault()
         setTags([...tags, tag])
     }
+    const handleTagUpdate = (index, tag) => {
+        const newTags = [...tags]
+        newTags[index] = tag
+        setTags(newTags)
+    }
+    const handleTagDelete = (e, tag) => {
+        e.preventDefault()
+        const newTags = tags.filter((t) => t !== tag)
+        setTags(newTags)
+    }
+
 
     // Form SUBMISSION
     // should include a recipe preview to either edit/update, then ultimately submit to the DB -Kat
@@ -38,6 +61,7 @@ const Create = () => {
             servings,
             tags,
             ingredients,
+            imglink
         }
         // console.log('post object: ', postObj)
         // Axios defaults to not passing credentials. this must be set to TRUE!!!!!!
@@ -50,6 +74,9 @@ const Create = () => {
             .catch(err => {
                 console.log('post error', err)
             })
+    }
+    const handleCancel = () => {
+        navigate(`/`)
     }
 
 
@@ -84,18 +111,27 @@ const Create = () => {
                     <div className='d-flex'>
                         <input className='form-control' placeholder='Add an ingredient'
                             type="text" onChange={(e) => { setIngredient(e.target.value) }} />
-                        <button className='btn btn-outline-dark' onClick={addIngredient}>+</button>
+                        <button className='btn btn-info' onClick={addIngredient}>Add</button>
                     </div>
                     <hr />
                     {/* LOAD INGREDIENTS */}
-                    {ingredients.map((ing, i) => { return (<p key={i}>{ing}</p>) })}
+                    {
+                        ingredients.map((ing, i) => {
+                            return (
+                                <div key={i} className='d-flex my-2'>
+                                    <input className='form-control' value={ing}
+                                        type="text" onChange={(e) => { handleIngUpdate(i, e.target.value) }} />
+                                    <button className='btn btn-sm btn-outline-danger' onClick={(e) => { handleIngDelete(e, ing) }}>Delete</button>
+                                </div>
+                            )
+                        })
+                    }
                     { /* SERVING COLUMN */}
-                    {/* <label htmlFor="instructions"><b>Servings</b></label>
+                    <label htmlFor="instructions"><b>Servings</b></label>
                     <div className='d-flex'>
                         <input className='form-control' placeholder='0'
                             type="number" onChange={(e) => { setServings(e.target.value) }} />
                     </div>
-                    <hr /> */}
                 </div>
                 {/* TAG COLUMN */}
                 <div className='col-4'>
@@ -103,16 +139,32 @@ const Create = () => {
                     <div className='d-flex'>
                         <input className='form-control' placeholder='Add a tag'
                             type="text" onChange={(e) => { setTag(e.target.value) }} />
-                        <button className='btn btn-outline-dark' onClick={addTag}>+</button>
+                        <button className='btn btn-info' onClick={addTag}>Add</button>
                     </div>
                     <hr />
                     {/* LOAD TAGS */}
-                    {tags.map((t, i) => { return (<p key={i}>{t}</p>) })}
+                    {
+                        tags.map((tag, i) => {
+                            return (
+                                <div key={i} className='d-flex my-2'>
+                                    <input className='form-control' value={tag}
+                                        type="text" onChange={(e) => handleTagUpdate(i, e.target.value)} />
+                                    <button className='btn btn-sm btn-outline-danger' onClick={(e) => { handleTagDelete(e, tag) }}>Delete</button>
+                                </div>
+                            )
+                        })
+                    }
+                    <label htmlFor="instructions"><b>Image Link</b></label>
+                    <div className='d-flex'>
+                        <input className='form-control'
+                            type="text" onChange={(e) => { setImglink(e.target.value) }} />
+                    </div>
                 </div>
             </form>
             {/* BUTTONS */}
             <div className='d-flex justify-content-end my-2 gap-2'>
-                <button onClick={handleSubmit} className='btn btn-outline-info shadow my-2'>Submit</button>
+                <button onClick={handleSubmit} className='btn btn-success shadow'>Submit</button>
+                <button onClick={handleCancel} className='btn btn-outline-warning shadow'>Cancel</button>
             </div>
         </div>
     )

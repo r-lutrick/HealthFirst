@@ -27,6 +27,9 @@ const RecipesSchema = new mongoose.Schema({
 	tags: {
 		type: Array
 	},
+	imglink: {
+		type: String
+	},
 	user: {
 		type: Schema.Types.ObjectId,
 		ref: "User"

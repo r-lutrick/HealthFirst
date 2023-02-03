@@ -17,10 +17,18 @@ const TableOfContents = () => {
                 <div>
                     <li className='list-group-item'>Trending</li>
                 </div>
-                <li className='list-group-item'>Create</li>
-                <li className='list-group-item'>Update</li>
-                <li className='list-group-item'>About Us</li>
-                <li className='list-group-item'>Our Mission</li>
+                <div>
+                    <li className='list-group-item'>Create</li>
+                </div>
+                <div>
+                    <li className='list-group-item'>Update</li>
+                </div>
+                <div>
+                    <li className='list-group-item'>About Us</li>
+                </div>
+                <div>
+                    <li className='list-group-item'>Our Mission</li>
+                </div>
             </ul>
         </div>
     )
