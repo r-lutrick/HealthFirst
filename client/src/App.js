@@ -6,9 +6,9 @@ import TableOfContents from "./views/TableOfContents";
 
 function App() {
   return (
-    <div className="container container-fluid">
+    <div className="">
       <NavBar />
-      <div className="d-flex mt-3">
+      <div className="container container-fluid d-flex mt-3">
         <div className="col-2">
           <TableOfContents />
         </div>
