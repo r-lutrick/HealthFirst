@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/HealthFirst/static/css/main.c2cab247.css",
+    "main.js": "/HealthFirst/static/js/main.5b13e8ee.js",
+    "index.html": "/HealthFirst/index.html",
+    "main.c2cab247.css.map": "/HealthFirst/static/css/main.c2cab247.css.map",
+    "main.5b13e8ee.js.map": "/HealthFirst/static/js/main.5b13e8ee.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c2cab247.css",
+    "static/js/main.5b13e8ee.js"
+  ]
+}
