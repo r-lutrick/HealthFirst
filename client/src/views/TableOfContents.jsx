@@ -6,28 +6,19 @@ const TableOfContents = () => {
             <b>Navigation</b>
             <ul className='list-group'>
                 <div>
-                    <li className='list-group-item'>Search</li>
-                </div>
-                <div>
-                    <li className='list-group-item'>All</li>
-                </div>
-                <div>
                     <li className='list-group-item'>Featured</li>
                 </div>
                 <div>
-                    <li className='list-group-item'>Trending</li>
+                    <li className='list-group-item'>Meals</li>
                 </div>
                 <div>
-                    <li className='list-group-item'>Create</li>
+                    <li className='list-group-item'>Occasions</li>
                 </div>
                 <div>
-                    <li className='list-group-item'>Update</li>
+                    <li className='list-group-item'>Cuisines</li>
                 </div>
                 <div>
                     <li className='list-group-item'>About Us</li>
-                </div>
-                <div>
-                    <li className='list-group-item'>Our Mission</li>
                 </div>
             </ul>
         </div>

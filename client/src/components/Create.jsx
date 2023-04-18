@@ -10,9 +10,9 @@ const Create = () => {
     const [servings, setServings] = useState(0)
     const [imglink, setImglink] = useState('')
     // Arrays
-    const [ingredient, setIngredient] = useState('')
+    const [ingredient, setIngredient] = useState('Add Ingredients')
     const [ingredients, setIngredients] = useState([])
-    const [tag, setTag] = useState('')
+    const [tag, setTag] = useState('Add Tags')
     const [tags, setTags] = useState([])
     const navigate = useNavigate()
     // console.log(navigate)
@@ -21,6 +21,7 @@ const Create = () => {
     const addIngredient = (e) => {
         e.preventDefault()
         setIngredients([...ingredients, ingredient])
+        setIngredient("")
     }
     const handleIngUpdate = (index, val) => {
         const newIngredients = [...ingredients]
@@ -37,6 +38,7 @@ const Create = () => {
     const addTag = (e) => {
         e.preventDefault()
         setTags([...tags, tag])
+        setTag("")
     }
     const handleTagUpdate = (index, tag) => {
         const newTags = [...tags]
@@ -109,7 +111,7 @@ const Create = () => {
                 <div className='col-4'>
                     <label htmlFor="instructions"><b>Ingredients</b></label>
                     <div className='d-flex'>
-                        <input className='form-control' placeholder='Add an ingredient'
+                        <input className='form-control' value={ingredient}
                             type="text" onChange={(e) => { setIngredient(e.target.value) }} />
                         <button className='btn btn-info' onClick={addIngredient}>Add</button>
                     </div>
@@ -137,7 +139,7 @@ const Create = () => {
                 <div className='col-4'>
                     <label htmlFor="instructions"><b>Tags</b></label>
                     <div className='d-flex'>
-                        <input className='form-control' placeholder='Add a tag'
+                        <input className='form-control' value={tag}
                             type="text" onChange={(e) => { setTag(e.target.value) }} />
                         <button className='btn btn-info' onClick={addTag}>Add</button>
                     </div>

@@ -51,7 +51,7 @@ const View = () => {
             <div className='d-flex justify-content-between mt-5'>
                 <h3>Ingredients</h3>
                 {/* Serving size can increase/multiply the ingredients */}
-                <p>Servings: <input className='mr-3' type="number" defaultValue={recipe.servings} /></p>
+                <p className='mr-4'>Servings: {recipe.servings}</p>
             </div>
             <ul className='list-group col-12 my-2'>
                 {

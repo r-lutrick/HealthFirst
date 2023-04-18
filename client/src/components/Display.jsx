@@ -17,40 +17,31 @@ const Display = () => {
                 console.log(err)
             })
     }, [])
-    
+
     const handleDivClick = (id) => {
         navigate(`/view/${id}`)
     }
 
     return (
         <div className='px-3'>
-            <h3>Featured Recipes</h3>
-            {
-                recipes.map((rec, i) => {
-                    return (
-                        <div onClick={() => {handleDivClick(rec._id)}} className='card shadow my-2' style={{cursor:'pointer'}} key={i}>
-                            {/* IMG HERE (img className="card-img-top"_ */}
-                            <div className='card-body'>
-                                <h5 className='card-title'>{rec.name}</h5>
-                                {/* AUTHOR HERE */}
-                                <p className='card-text'>{rec.description} </p>
+            <h3 className='text-capitalize text-xl-center font-weight-bold'>Featured Recipes</h3>
+            <div className="d-flex gap-1" >
+                {
+                    recipes.filter((recipe) => recipe.tags.some(element => element.toLowerCase() === 'featured')).map((rec, i) => {
+                        return (
+                            <div onClick={() => { handleDivClick(rec._id) }} className='card shadow my-2' style={{ cursor: 'pointer', width: "18rem" }} key={i}>
+                                {/* IMG HERE (img className="card-img-top"_ */}
+                                <img src={rec.imglink} alt={rec.name} />
+                                <div className='card-body'>
+                                    <h5 className='card-title'>{rec.name}</h5>
+                                    {/* AUTHOR HERE */}
+                                    <p className='card-text'>{rec.description} </p>
+                                </div>
                             </div>
-                            <ul className='list-group list-group-flush'>
-                                {rec.tags.map((tag, i) => {
-                                    return (
-                                        <li className='list-group-item' key={i}>
-                                            {tag}
-                                        </li>
-                                    )
-                                })}
-                            </ul>
-                            <div className=' d-flex p-2 justify-content-end'>
-                                {/* <Link to={`/view/${rec._id}`} className='btn btn-outline-info'>View</Link> */}
-                            </div>
-                        </div>
-                    )
-                })
-            }
+                        )
+                    })
+                }
+            </div>
         </div>
     )
 }
