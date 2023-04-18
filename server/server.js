@@ -13,7 +13,7 @@ const cookieParser = require('cookie-parser');
 
 app.use(cookieParser());
 // Change the app.use(cors()) to the one below
-app.use(cors({ credentials: true, origin: 'http://localhost:3001' }));
+app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 
 
 
