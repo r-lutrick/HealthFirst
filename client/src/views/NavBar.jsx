@@ -1,14 +1,16 @@
 import React from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import CreateButton from '../components/CreateButton'
+import HomeButton from '../components/HomeButton'
 
 const NavBar = () => {
     const location = useLocation()
     const navigate = useNavigate()
     // console.log(location)
-    const logoutHandler = ()=>{
-        axios.get(`http://localhost:8000/api/logout`, {withCredentials: true})
-            .then(res=>navigate("/"))
+    const logoutHandler = () => {
+        axios.get(`http://localhost:8000/api/logout`, { withCredentials: true })
+            .then(res => navigate("/"))
             .catch()
     }
 
@@ -19,8 +21,8 @@ const NavBar = () => {
                 <div>
                     {
                         location.pathname === '/' ?
-                            <Link className='btn btn-info' to={'/create'}>New Recipe</Link> :
-                            <Link className='btn btn-info' to={'/'}>Home</Link>
+                            <CreateButton/> : 
+                            <HomeButton/>
                     }
                     <Link className='mx-2 btn btn-outline-info' to={'/login'}>Login/Register</Link>
                     <button onClick={logoutHandler} className='mx-2 btn btn-outline-info'>Logout</button>

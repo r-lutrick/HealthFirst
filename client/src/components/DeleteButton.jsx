@@ -20,6 +20,5 @@ const DeleteButton = (props) => {
         </div>
     )
 }
-//github test
 
 export default DeleteButton

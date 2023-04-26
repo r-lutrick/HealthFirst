@@ -7,33 +7,35 @@ import {Link} from 'react-router-dom'
 const UserInfo = () => {
     // NOT RECOMMENDED TO SET THE WHOLE USER DUE TO PASSWORD
     const [user, setUser] = useState()
-
+    const [loaded, setLoaded] = useState(false)
 
     useEffect(()=>{
         axios.get(`http://localhost:8000/api/getUser`, {withCredentials: true})
             .then(res=> {
                 setUser(res.data)
-                // console.log("USER RECIPES: ",user.recipes)
-                console.log("Data:", res.data)
+                setLoaded(true)
             })
             .catch()
-    },[])
+    },[loaded])
 
     return (
-        <div>
+        <>
             <h2>My Account</h2>
-            <h4>First Name:</h4> <p>{user && user.firstName}</p>
-            <h4>Recipes:</h4> {
-                user && user.recipes.map((recipe, i) => {
+            <h4>First Name:</h4> <p>{loaded && user.firstName}</p>
+            <h4>Recipes:</h4> 
+            {
+                // loaded && (user.recipes.length === 0 ? "No Recipes yet!" : user.recipes.map((recipe, i) => {
+                loaded && user.recipes.map((recipe, i) => {
                     return (
-                        <div key={i}>
-                            {/* <p>{recipe.name}</p> */}
+                        <p key={i}>
                             <Link to={`/view/${recipe._id}`}>{recipe.name}</Link>
-                        </div>
+                        </p>
                     )
                 })
+                // If displaying "no recipes yet" then uncomment
+                // ) 
             }
-        </div>
+        </>
     )
 }
 

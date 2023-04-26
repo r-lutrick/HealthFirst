@@ -57,7 +57,7 @@ const Update = () => {
     }
 
     // Handle Ingredients
-    const handleIngUpdate = (index, val) => {
+    const handleIngredientUpdate = (index, val) => {
         const newIngredients = [...ingredients]
         newIngredients[index] = val
         setIngredients(newIngredients)
@@ -120,7 +120,7 @@ const Update = () => {
                             return (
                                 <div key={i} className='d-flex my-2'>
                                     <input className='form-control' value={ing}
-                                        type="text" onChange={(e) => { handleIngUpdate(i, e.target.value) }} />
+                                        type="text" onChange={(e) => { handleIngredientUpdate(i, e.target.value) }} />
                                     <button className='btn btn-sm btn-outline-danger' onClick={(e) => { handleIngDelete(e, ing) }}>Delete</button>
                                 </div>
                             )
